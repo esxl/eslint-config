@@ -29,7 +29,7 @@
     "husky": "^7.0.4",
     "is-ci": "^3.0.1",
     "jest": "^27.5.1",
-    "lint-staged": "^12.3.7",
+    "lint-staged": "^13.0.3",
     "prettier": "2.6.1",
     "rollup": "^2.70.1",
     "tslib": "^2.3.1",
