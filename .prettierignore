@@ -1,0 +1,7 @@
+.husky/
+dist/
+
+.*ignore
+.gitattributes
+.gitmodules
+package-lock.json

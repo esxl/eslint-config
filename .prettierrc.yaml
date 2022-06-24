@@ -1,0 +1,8 @@
+overrides:
+  - files:
+      - '**/*.yaml'
+      - '**/*.yml'
+      - '**/.github/**/*.yaml'
+      - '**/.github/**/*.yml'
+    options:
+      singleQuote: true

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "declarationDir": "./dist/types",
+    "outDir": "./dist"
+  },
+  "exclude": ["src/__fixtures__", "./src/__tests__/"],
+  "extends": "@esxl/config-typescript",
+  "include": ["./src/**/*.ts"]
+}
