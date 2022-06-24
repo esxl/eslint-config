@@ -1,0 +1,24 @@
+name: Build
+
+env:
+  CI: true
+
+on:
+  pull_request:
+    branches: [main]
+
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: esxl/action-package-build@v0.3.0
+        with:
+          node-version: ${{ matrix.node-version }}
+          packages-token: ${{ secrets.BOT_GITHUB_PACKAGES_READONLY }}
+
+    strategy:
+      matrix:
+        node-version: [16, 18]

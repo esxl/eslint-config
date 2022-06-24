@@ -1,0 +1,46 @@
+version: 2
+
+registries:
+  # https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#npm-registry
+  npm-github:
+    token: ${{ secrets.BOT_GITHUB_PACKAGES_READONLY }}
+    type: npm-registry
+    url: https://npm.pkg.github.com
+
+# https://docs.github.com/en/github/administering-a-repository/configuration-options-for-dependency-updates
+updates:
+  # https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/keeping-your-actions-up-to-date-with-dependabot
+  - package-ecosystem: github-actions
+    assignees:
+      - creatch
+    commit-message:
+      prefix: ci-cd
+    directory: /
+    labels:
+      - bot
+      - bot-dependabot
+      - github-actions
+    open-pull-requests-limit: 25
+    schedule:
+      interval: daily
+      time: '11:00'
+      timezone: Etc/UTC
+
+  - package-ecosystem: npm
+    assignees:
+      - creatch
+    commit-message:
+      prefix: deps
+      prefix-development: deps-dev
+    directory: /
+    labels:
+      - bot
+      - bot-dependabot
+      - npm-dependencies
+    open-pull-requests-limit: 10
+    registries:
+      - npm-github
+    schedule:
+      interval: daily
+      time: '11:00'
+      timezone: Etc/UTC

@@ -1,0 +1,33 @@
+name: Bump package-lock.json
+
+on:
+  workflow_dispatch:
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Remove package-lock.json
+        run: rm package-lock.json
+
+      - uses: actions/setup-node@v3.3.0
+        with:
+          node-version-file: .nvmrc
+          registry-url: https://npm.pkg.github.com/
+
+      - name: Install fresh dependencies
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.BOT_GITHUB_PACKAGES_READONLY }}
+        run: npm install . --ignore-scripts --package-lock-only
+
+      - name: Create pull request
+        # https://github.com/marketplace/actions/create-pull-request#usage
+        uses: peter-evans/create-pull-request@v4.0.4
+        with:
+          body: ''
+          branch: package-lock-semver
+          commit-message: 'deps: bump package-lock.json to latest semver matches'
+          title: 'deps: bump package-lock.json to latest semver matches'
+          token: ${{ secrets.BOT_ACTIONS_PACKAGE_LOCK }}
