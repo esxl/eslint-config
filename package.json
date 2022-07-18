@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@babel/eslint-parser": "^7.17.0",
+    "@babel/eslint-parser": "^7.18.9",
     "@typescript-eslint/parser": "^5.30.0",
     "@esxl/constants": "0.1.0"
   },
